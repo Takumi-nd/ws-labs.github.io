@@ -670,15 +670,292 @@ blockquote {
 }
 
 .checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg-width%3D%2216%22-height%3D%2216%22-viewBox%3D%220-0-16-16%22-fill%3D%22none%22-xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect-width%3D%2216%22-height%3D%2216%22-fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath-d%3D%22M6.71429-12.2852L14-4.9995L12.7143-3.71436L6.71429-9.71378L3.28571-6.2831L2-7.57092L6.71429-12.2852Z%22-fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 
 .checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg-width%3D%2216%22-height%3D%2216%22-viewBox%3D%220-0-16-16%22-fill%3D%22none%22-xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect-x%3D%220.75%22-y%3D%220.75%22-width%3D%2214.5%22-height%3D%2214.5%22-fill%3D%22white%22-stroke%3D%22%2336352F%22-stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="23dc2c64-604d-8023-bc1e-d7629e8a5a4e" class="page sans"><header><h1 class="page-title">User &amp; Group Policy</h1><p class="page-description"></p></header><div class="page-body"><p id="23dc2c64-604d-80fa-be22-df5fe4a08c48" class="">Mục tiêu:</p><ul id="23dc2c64-604d-8004-98a0-e29fbafb99f9" class="bulleted-list"><li style="list-style-type:disc">Tạo nhóm, quản lý users</li></ul><ul id="23dc2c64-604d-804e-9f38-d7153cd23500" class="bulleted-list"><li style="list-style-type:disc">Cấp quyền cho nhóm, users</li></ul><p id="23dc2c64-604d-808b-bc23-c9094f3b0180" class="">Enviroment:</p><ul id="23dc2c64-604d-80ba-a566-dab4c711e546" class="bulleted-list"><li style="list-style-type:disc">Virtual machines: Windows Server 2019</li></ul><ul id="23dc2c64-604d-80c8-a852-d9e28e0ce269" class="bulleted-list"><li style="list-style-type:disc">VirtualBox</li></ul><p id="23dc2c64-604d-8092-beb2-c7f37f5286d9" class="">Mô hình:</p><figure id="23dc2c64-604d-8023-b8f3-e008b078e7c4" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image.png"><img style="width:554px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image.png"/></a></figure><p id="23dc2c64-604d-80e3-a58f-e5f6797cca7d" class="">
-</p><h2 id="23dc2c64-604d-80e4-90fd-f6a6dd03e638" class="">1. Thiết lập chính sách hệ thống cho miền theo yêu cầu</h2><ol type="a" id="23dc2c64-604d-801f-a24c-e3343339f70c" class="numbered-list" start="1"><li>Tất cả các tài khoản phải có mật khẩu từ 5 kí tự trở lên. Không yêu cầu mật khẩu phức<br/>tạp:<br/></li></ol><figure id="23dc2c64-604d-80dd-831c-f3e2e429e2d9" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%201.png"><img style="width:534px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%201.png"/></a></figure><p id="23dc2c64-604d-80e5-893d-e2e9fba18576" class="">b. Tự động khóa tài khoản sau 5 lần đánh sai mật khẩu và khóa trong 10 phút.</p><figure id="23dc2c64-604d-8048-a7d1-d7c96b1653cb" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%202.png"><img style="width:451px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%202.png"/></a></figure><h2 id="23dc2c64-604d-808e-99e3-c02b5f83c2c2" class="">2. Quản lý tài khoản người dùng và tài khoản nhóm: </h2><ol type="a" id="23dc2c64-604d-80e2-a9ea-e22bacdac1c2" class="numbered-list" start="1"><li>Tạo tài khoản người dùng và tài khoản nhóm bảo mật: <ul id="23dc2c64-604d-80da-ab1b-d2555aaada26" class="bulleted-list"><li style="list-style-type:disc">Nhóm: Quantri.<ul id="23dc2c64-604d-8024-8fcc-d547120aecd4" class="bulleted-list"><li style="list-style-type:circle">Tài khoản: qt1, qt2. </li></ul></li></ul><ul id="23dc2c64-604d-80ca-97b9-f5bf643975e6" class="bulleted-list"><li style="list-style-type:disc">Nhóm: Giangvien<ul id="23dc2c64-604d-8010-8bc4-c2cfa2635d7f" class="bulleted-list"><li style="list-style-type:circle">Tài khoản: gv1, gv2. </li></ul></li></ul><ul id="23dc2c64-604d-80ae-a65c-f693680b3d0c" class="bulleted-list"><li style="list-style-type:disc">Nhóm: Maytinh. <ul id="23dc2c64-604d-8039-bcc4-c11e830dfeb2" class="bulleted-list"><li style="list-style-type:circle">Tài khoản: mt1, mt2, mt3.</li></ul></li></ul><ul id="23dc2c64-604d-805c-b81f-f104028e5e1f" class="bulleted-list"><li style="list-style-type:disc">Nhóm: Vienthong. <ul id="23dc2c64-604d-80c6-89a0-eef3d17fbd68" class="bulleted-list"><li style="list-style-type:circle">Tài khoản: vt1, vt2, vt3.</li></ul></li></ul></li></ol><figure id="23dc2c64-604d-8043-b0d0-e0231517f670" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%203.png"><img style="width:506px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%203.png"/></a></figure><p id="23dc2c64-604d-80b3-bef6-c7860e7072de" class="">b. Tất cả các thành viên của các nhóm không phải thay đổi mật khẩu khi đăng nhập vào hệ<br/>thống lần đầu tiên.<br/></p><figure id="23dc2c64-604d-80b6-9ee3-f0f37cf47919" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%204.png"><img style="width:547px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%204.png"/></a></figure><p id="23dc2c64-604d-80ad-ab17-df367b484069" class="">c. Người dùng vt2 không được phép đổi mật khẩu từ máy trạm. </p><figure id="23dc2c64-604d-8060-bc9c-ca451cc33ce2" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%205.png"><img style="width:477px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%205.png"/></a></figure><p id="23dc2c64-604d-8020-89fa-dfbdb8e006a3" class="">d. Nhóm Quantri có toàn quyền quản trị mạng. </p><figure id="23dc2c64-604d-80d0-ae0f-cd4182b4f3ed" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%206.png"><img style="width:684px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%206.png"/></a></figure><h2 id="23dc2c64-604d-80ef-bb78-fc6897e52cf7" class="">3. Tạo các Organizational Unit (OU) tương ứng với các nhóm đã tạo ở câu trên (QT, GV, MT, VT).</h2><figure id="23dc2c64-604d-8011-b2b0-d5093d71a01e" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%207.png"><img style="width:235px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%207.png"/></a></figure><ul id="23dc2c64-604d-80b8-87c7-e8beb0c618c7" class="bulleted-list"><li style="list-style-type:disc">phân quyền  mt1 có quyền tạo user trong phạm vi OU MT: </li></ul><figure id="23dc2c64-604d-807b-b628-dd49310dae85" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%208.png"><img style="width:378px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%208.png"/></a></figure><h2 id="23dc2c64-604d-8063-9f36-ffd3ba552f28" class="">4. cấp quyền hệ thống cho người dùng:</h2><ul id="23dc2c64-604d-803b-aa20-d5943f9b8f4a" class="bulleted-list"><li style="list-style-type:disc">Các thành viên trong nhóm Giangvien có quyền shutdown máy DC từ xa</li></ul><figure id="23dc2c64-604d-8078-b1bd-ebf36773a5bd" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%209.png"><img style="width:477px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%209.png"/></a></figure><figure id="23dc2c64-604d-80f3-9097-f317f11a54ba" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2010.png"><img style="width:709.953125px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2010.png"/></a></figure><ul id="23dc2c64-604d-80c9-b2b4-fe030c796047" class="bulleted-list"><li style="list-style-type:disc">Cho phép tất cả các người dùng có thể đăng nhập trên máy DC ngoại trừ người dùng<br/>mt2<br/></li></ul><figure id="23dc2c64-604d-8006-86b0-d99412ee7dfc" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2011.png"><img style="width:710px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2011.png"/></a></figure><ul id="23dc2c64-604d-8086-8687-d60812824fb5" class="bulleted-list"><li style="list-style-type:disc">Nhóm Maytinh được quyền thay đổi giờ hệ thống trên máy DC</li></ul><figure id="23dc2c64-604d-80e9-af0c-f0db96fbc7fc" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2012.png"><img style="width:709.90625px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2012.png"/></a></figure><ul id="23dc2c64-604d-802d-bb9e-c78bbe140448" class="bulleted-list"><li style="list-style-type:disc">Người dùng vt1 có quyền sao lưu (backup) và khôi phục (restore) tập tin và thư mục trên<br/>máy DC.<br/><ul id="23dc2c64-604d-8059-8f8b-d4e0f13b24a9" class="bulleted-list"><li style="list-style-type:circle"> Quyền khôi phục:<figure id="23dc2c64-604d-801c-a54d-c8176867dcd0" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2013.png"><img style="width:709.984375px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2013.png"/></a></figure></li></ul><ul id="23dc2c64-604d-80e4-9795-ec0842bb5baf" class="bulleted-list"><li style="list-style-type:circle">Quyền sao lưu:<figure id="23dc2c64-604d-8013-ba35-c733d450191a" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2014.png"><img style="width:710px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2014.png"/></a></figure></li></ul></li></ul><p id="23dc2c64-604d-8014-b27e-cac2622c0d51" class="">
-</p><h2 id="23dc2c64-604d-807c-96d6-cff8e5815029" class="">5. cấu hình các thông số bảo mật:</h2><ul id="23dc2c64-604d-80ac-9d0f-cb5147fba1da" class="bulleted-list"><li style="list-style-type:disc">Thay đổi tên tài khoản Administrator thành Quantrimang.</li></ul><figure id="23dc2c64-604d-8056-a549-e702074f2f7a" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2015.png"><img style="width:503px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2015.png"/></a></figure><ul id="23dc2c64-604d-80a4-8a81-d4b1a62a2474" class="bulleted-list"><li style="list-style-type:disc"> Cho phép người dùng shutdown máy mà không cần đăng nhập vào hệ thống và không cho phép hiển thị username của người đăng nhập trước. </li></ul><figure id="23dc2c64-604d-80ad-8621-cb99cb2c04d4" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2016.png"><img style="width:575px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2016.png"/></a></figure><h2 id="23dc2c64-604d-8066-bf5e-db363fe1cbb3" class="">6. Dùng Audit Policy để thực hiện chức năng kiểm toán:</h2><ul id="23dc2c64-604d-8061-bec8-e9329207aaf3" class="bulleted-list"><li style="list-style-type:disc">Dùng Event Viewer để xem và quản lí các sự kiện:<ul id="23dc2c64-604d-8012-8b9b-d8e947316942" class="bulleted-list"><li style="list-style-type:circle">Theo dõi quá trình logon của các người dùng trong miền<figure id="23dc2c64-604d-806c-b4cc-c92109e7880b" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2017.png"><img style="width:653.96875px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2017.png"/></a></figure></li></ul><ul id="23dc2c64-604d-800c-9660-d3d383cf9d2b" class="bulleted-list"><li style="list-style-type:circle">Theo dõi các sự kiện hệ thống<figure id="23dc2c64-604d-80ad-ac20-f13ceaeb148a" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2018.png"><img style="width:653.96875px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2018.png"/></a></figure></li></ul></li></ul><p id="23dc2c64-604d-80a5-80f3-fa69b1007a48" class="">
-</p><h2 id="23dc2c64-604d-800d-8f7a-f0b67e6a1d80" class="">7.  Áp dụng chính sách nhóm cho nhóm maytinh:</h2><ul id="23dc2c64-604d-80d4-9dfa-eaaa2c377fd7" class="bulleted-list"><li style="list-style-type:disc">Không cho các thành viên chạy Command Prompt:<ul id="23dc2c64-604d-8004-956e-dbb728e249f1" class="bulleted-list"><li style="list-style-type:circle">kết quả khi chạy cmd trên máy PC2</li></ul></li></ul><figure id="23dc2c64-604d-80cb-a73c-d935820d9471" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2019.png"><img style="width:710px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2019.png"/></a></figure><ul id="23dc2c64-604d-809c-9daf-d2823b36eab2" class="bulleted-list"><li style="list-style-type:disc">Các thành viên chỉ có thể chạy Notepad<ul id="23dc2c64-604d-8010-b691-d01df3cf84fa" class="bulleted-list"><li style="list-style-type:circle">kết quả khi chạy notepad trên máy PC2</li></ul></li></ul><figure id="23dc2c64-604d-8097-9dd7-eea00122e099" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2020.png"><img style="width:710px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2020.png"/></a></figure><ul id="23dc2c64-604d-8065-929e-fde2c1c5389e" class="bulleted-list"><li style="list-style-type:disc">Không cho phép truy cập công cụ Control Panel.<ul id="23dc2c64-604d-8041-97c0-d7923943d215" class="bulleted-list"><li style="list-style-type:circle">kết quả khi chạy control panel trên máy PC2</li></ul></li></ul><figure id="23dc2c64-604d-80ca-9af8-de6870744a62" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2021.png"><img style="width:709.953125px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2021.png"/></a></figure><p id="23dc2c64-604d-80ef-a0cd-c6abf1536ccb" class="">
-</p><h2 id="23dc2c64-604d-806c-87ff-eafe68ceba8e" class="">8. Phân phối phần mềm FireFox cho các tài khoản người dùng trong domain</h2><figure id="23dc2c64-604d-80c8-96c2-c089de9f7f19" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2022.png"><img style="width:684px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2022.png"/></a></figure><ul id="23dc2c64-604d-8071-8c0c-d2533cd57932" class="bulleted-list"><li style="list-style-type:disc">PC2 đã có firefox</li></ul><figure id="23dc2c64-604d-80c8-ae30-e9e9b21fb703" class="image"><a href="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2023.png"><img style="width:436px" src="User%20&amp;%20Group%20Policy%2023dc2c64604d8023bc1ed7629e8a5a4e/image%2023.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+</style>
+</head>
+
+<body>
+	<article id="23dc2c64-604d-8023-bc1e-d7629e8a5a4e" class="page sans">
+		<header>
+			<h1 class="page-title">User &amp; Group Policy</h1>
+			<p class="page-description"></p>
+		</header>
+		<div class="page-body">
+			<p id="23dc2c64-604d-80fa-be22-df5fe4a08c48" class="">Mục tiêu:</p>
+			<ul id="23dc2c64-604d-8004-98a0-e29fbafb99f9" class="bulleted-list">
+				<li style="list-style-type:disc">Tạo nhóm, quản lý users</li>
+			</ul>
+			<ul id="23dc2c64-604d-804e-9f38-d7153cd23500" class="bulleted-list">
+				<li style="list-style-type:disc">Cấp quyền cho nhóm, users</li>
+			</ul>
+			<p id="23dc2c64-604d-808b-bc23-c9094f3b0180" class="">Enviroment:</p>
+			<ul id="23dc2c64-604d-80ba-a566-dab4c711e546" class="bulleted-list">
+				<li style="list-style-type:disc">Virtual machines: Windows Server 2019</li>
+			</ul>
+			<ul id="23dc2c64-604d-80c8-a852-d9e28e0ce269" class="bulleted-list">
+				<li style="list-style-type:disc">VirtualBox</li>
+			</ul>
+			<p id="23dc2c64-604d-8092-beb2-c7f37f5286d9" class="">Mô hình:</p>
+			<figure id="23dc2c64-604d-8023-b8f3-e008b078e7c4" class="image"><a
+					href="User-&amp;-Group-Policy/image.png"><img
+						style="width:554px"
+						src="User-&amp;-Group-Policy/image.png" /></a></figure>
+			<p id="23dc2c64-604d-80e3-a58f-e5f6797cca7d" class="">
+			</p>
+			<h2 id="23dc2c64-604d-80e4-90fd-f6a6dd03e638" class="">1. Thiết lập chính sách hệ thống cho miền theo yêu
+				cầu</h2>
+			<ol type="a" id="23dc2c64-604d-801f-a24c-e3343339f70c" class="numbered-list" start="1">
+				<li>Tất cả các tài khoản phải có mật khẩu từ 5 kí tự trở lên. Không yêu cầu mật khẩu
+					phức<br />tạp:<br /></li>
+			</ol>
+			<figure id="23dc2c64-604d-80dd-831c-f3e2e429e2d9" class="image"><a
+					href="User-&amp;-Group-Policy/image-1.png"><img
+						style="width:534px"
+						src="User-&amp;-Group-Policy/image-1.png" /></a>
+			</figure>
+			<p id="23dc2c64-604d-80e5-893d-e2e9fba18576" class="">b. Tự động khóa tài khoản sau 5 lần đánh sai mật khẩu
+				và khóa trong 10 phút.</p>
+			<figure id="23dc2c64-604d-8048-a7d1-d7c96b1653cb" class="image"><a
+					href="User-&amp;-Group-Policy/image-2.png"><img
+						style="width:451px"
+						src="User-&amp;-Group-Policy/image-2.png" /></a>
+			</figure>
+			<h2 id="23dc2c64-604d-808e-99e3-c02b5f83c2c2" class="">2. Quản lý tài khoản người dùng và tài khoản nhóm:
+			</h2>
+			<ol type="a" id="23dc2c64-604d-80e2-a9ea-e22bacdac1c2" class="numbered-list" start="1">
+				<li>Tạo tài khoản người dùng và tài khoản nhóm bảo mật: <ul id="23dc2c64-604d-80da-ab1b-d2555aaada26"
+						class="bulleted-list">
+						<li style="list-style-type:disc">Nhóm: Quantri.<ul id="23dc2c64-604d-8024-8fcc-d547120aecd4"
+								class="bulleted-list">
+								<li style="list-style-type:circle">Tài khoản: qt1, qt2. </li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="23dc2c64-604d-80ca-97b9-f5bf643975e6" class="bulleted-list">
+						<li style="list-style-type:disc">Nhóm: Giangvien<ul id="23dc2c64-604d-8010-8bc4-c2cfa2635d7f"
+								class="bulleted-list">
+								<li style="list-style-type:circle">Tài khoản: gv1, gv2. </li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="23dc2c64-604d-80ae-a65c-f693680b3d0c" class="bulleted-list">
+						<li style="list-style-type:disc">Nhóm: Maytinh. <ul id="23dc2c64-604d-8039-bcc4-c11e830dfeb2"
+								class="bulleted-list">
+								<li style="list-style-type:circle">Tài khoản: mt1, mt2, mt3.</li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="23dc2c64-604d-805c-b81f-f104028e5e1f" class="bulleted-list">
+						<li style="list-style-type:disc">Nhóm: Vienthong. <ul id="23dc2c64-604d-80c6-89a0-eef3d17fbd68"
+								class="bulleted-list">
+								<li style="list-style-type:circle">Tài khoản: vt1, vt2, vt3.</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ol>
+			<figure id="23dc2c64-604d-8043-b0d0-e0231517f670" class="image"><a
+					href="User-&amp;-Group-Policy/image-3.png"><img
+						style="width:506px"
+						src="User-&amp;-Group-Policy/image-3.png" /></a>
+			</figure>
+			<p id="23dc2c64-604d-80b3-bef6-c7860e7072de" class="">b. Tất cả các thành viên của các nhóm không phải thay
+				đổi mật khẩu khi đăng nhập vào hệ<br />thống lần đầu tiên.<br /></p>
+			<figure id="23dc2c64-604d-80b6-9ee3-f0f37cf47919" class="image"><a
+					href="User-&amp;-Group-Policy/image-4.png"><img
+						style="width:547px"
+						src="User-&amp;-Group-Policy/image-4.png" /></a>
+			</figure>
+			<p id="23dc2c64-604d-80ad-ab17-df367b484069" class="">c. Người dùng vt2 không được phép đổi mật khẩu từ máy
+				trạm. </p>
+			<figure id="23dc2c64-604d-8060-bc9c-ca451cc33ce2" class="image"><a
+					href="User-&amp;-Group-Policy/image-5.png"><img
+						style="width:477px"
+						src="User-&amp;-Group-Policy/image-5.png" /></a>
+			</figure>
+			<p id="23dc2c64-604d-8020-89fa-dfbdb8e006a3" class="">d. Nhóm Quantri có toàn quyền quản trị mạng. </p>
+			<figure id="23dc2c64-604d-80d0-ae0f-cd4182b4f3ed" class="image"><a
+					href="User-&amp;-Group-Policy/image-6.png"><img
+						style="width:684px"
+						src="User-&amp;-Group-Policy/image-6.png" /></a>
+			</figure>
+			<h2 id="23dc2c64-604d-80ef-bb78-fc6897e52cf7" class="">3. Tạo các Organizational Unit (OU) tương ứng với các
+				nhóm đã tạo ở câu trên (QT, GV, MT, VT).</h2>
+			<figure id="23dc2c64-604d-8011-b2b0-d5093d71a01e" class="image"><a
+					href="User-&amp;-Group-Policy/image-7.png"><img
+						style="width:235px"
+						src="User-&amp;-Group-Policy/image-7.png" /></a>
+			</figure>
+			<ul id="23dc2c64-604d-80b8-87c7-e8beb0c618c7" class="bulleted-list">
+				<li style="list-style-type:disc">phân quyền mt1 có quyền tạo user trong phạm vi OU MT: </li>
+			</ul>
+			<figure id="23dc2c64-604d-807b-b628-dd49310dae85" class="image"><a
+					href="User-&amp;-Group-Policy/image-8.png"><img
+						style="width:378px"
+						src="User-&amp;-Group-Policy/image-8.png" /></a>
+			</figure>
+			<h2 id="23dc2c64-604d-8063-9f36-ffd3ba552f28" class="">4. cấp quyền hệ thống cho người dùng:</h2>
+			<ul id="23dc2c64-604d-803b-aa20-d5943f9b8f4a" class="bulleted-list">
+				<li style="list-style-type:disc">Các thành viên trong nhóm Giangvien có quyền shutdown máy DC từ xa</li>
+			</ul>
+			<figure id="23dc2c64-604d-8078-b1bd-ebf36773a5bd" class="image"><a
+					href="User-&amp;-Group-Policy/image-9.png"><img
+						style="width:477px"
+						src="User-&amp;-Group-Policy/image-9.png" /></a>
+			</figure>
+			<figure id="23dc2c64-604d-80f3-9097-f317f11a54ba" class="image"><a
+					href="User-&amp;-Group-Policy/image-10.png"><img
+						style="width:709.953125px"
+						src="User-&amp;-Group-Policy/image-10.png" /></a>
+			</figure>
+			<ul id="23dc2c64-604d-80c9-b2b4-fe030c796047" class="bulleted-list">
+				<li style="list-style-type:disc">Cho phép tất cả các người dùng có thể đăng nhập trên máy DC ngoại trừ
+					người dùng<br />mt2<br /></li>
+			</ul>
+			<figure id="23dc2c64-604d-8006-86b0-d99412ee7dfc" class="image"><a
+					href="User-&amp;-Group-Policy/image-11.png"><img
+						style="width:710px"
+						src="User-&amp;-Group-Policy/image-11.png" /></a>
+			</figure>
+			<ul id="23dc2c64-604d-8086-8687-d60812824fb5" class="bulleted-list">
+				<li style="list-style-type:disc">Nhóm Maytinh được quyền thay đổi giờ hệ thống trên máy DC</li>
+			</ul>
+			<figure id="23dc2c64-604d-80e9-af0c-f0db96fbc7fc" class="image"><a
+					href="User-&amp;-Group-Policy/image-12.png"><img
+						style="width:709.90625px"
+						src="User-&amp;-Group-Policy/image-12.png" /></a>
+			</figure>
+			<ul id="23dc2c64-604d-802d-bb9e-c78bbe140448" class="bulleted-list">
+				<li style="list-style-type:disc">Người dùng vt1 có quyền sao lưu (backup) và khôi phục (restore) tập tin
+					và thư mục trên<br />máy DC.<br />
+					<ul id="23dc2c64-604d-8059-8f8b-d4e0f13b24a9" class="bulleted-list">
+						<li style="list-style-type:circle"> Quyền khôi phục:<figure
+								id="23dc2c64-604d-801c-a54d-c8176867dcd0" class="image"><a
+									href="User-&amp;-Group-Policy/image-13.png"><img
+										style="width:709.984375px"
+										src="User-&amp;-Group-Policy/image-13.png" /></a>
+							</figure>
+						</li>
+					</ul>
+					<ul id="23dc2c64-604d-80e4-9795-ec0842bb5baf" class="bulleted-list">
+						<li style="list-style-type:circle">Quyền sao lưu:<figure
+								id="23dc2c64-604d-8013-ba35-c733d450191a" class="image"><a
+									href="User-&amp;-Group-Policy/image-14.png"><img
+										style="width:710px"
+										src="User-&amp;-Group-Policy/image-14.png" /></a>
+							</figure>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<p id="23dc2c64-604d-8014-b27e-cac2622c0d51" class="">
+			</p>
+			<h2 id="23dc2c64-604d-807c-96d6-cff8e5815029" class="">5. cấu hình các thông số bảo mật:</h2>
+			<ul id="23dc2c64-604d-80ac-9d0f-cb5147fba1da" class="bulleted-list">
+				<li style="list-style-type:disc">Thay đổi tên tài khoản Administrator thành Quantrimang.</li>
+			</ul>
+			<figure id="23dc2c64-604d-8056-a549-e702074f2f7a" class="image"><a
+					href="User-&amp;-Group-Policy/image-15.png"><img
+						style="width:503px"
+						src="User-&amp;-Group-Policy/image-15.png" /></a>
+			</figure>
+			<ul id="23dc2c64-604d-80a4-8a81-d4b1a62a2474" class="bulleted-list">
+				<li style="list-style-type:disc"> Cho phép người dùng shutdown máy mà không cần đăng nhập vào hệ thống
+					và không cho phép hiển thị username của người đăng nhập trước. </li>
+			</ul>
+			<figure id="23dc2c64-604d-80ad-8621-cb99cb2c04d4" class="image"><a
+					href="User-&amp;-Group-Policy/image-16.png"><img
+						style="width:575px"
+						src="User-&amp;-Group-Policy/image-16.png" /></a>
+			</figure>
+			<h2 id="23dc2c64-604d-8066-bf5e-db363fe1cbb3" class="">6. Dùng Audit Policy để thực hiện chức năng kiểm
+				toán:</h2>
+			<ul id="23dc2c64-604d-8061-bec8-e9329207aaf3" class="bulleted-list">
+				<li style="list-style-type:disc">Dùng Event Viewer để xem và quản lí các sự kiện:<ul
+						id="23dc2c64-604d-8012-8b9b-d8e947316942" class="bulleted-list">
+						<li style="list-style-type:circle">Theo dõi quá trình logon của các người dùng trong miền<figure
+								id="23dc2c64-604d-806c-b4cc-c92109e7880b" class="image"><a
+									href="User-&amp;-Group-Policy/image-17.png"><img
+										style="width:653.96875px"
+										src="User-&amp;-Group-Policy/image-17.png" /></a>
+							</figure>
+						</li>
+					</ul>
+					<ul id="23dc2c64-604d-800c-9660-d3d383cf9d2b" class="bulleted-list">
+						<li style="list-style-type:circle">Theo dõi các sự kiện hệ thống<figure
+								id="23dc2c64-604d-80ad-ac20-f13ceaeb148a" class="image"><a
+									href="User-&amp;-Group-Policy/image-18.png"><img
+										style="width:653.96875px"
+										src="User-&amp;-Group-Policy/image-18.png" /></a>
+							</figure>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<p id="23dc2c64-604d-80a5-80f3-fa69b1007a48" class="">
+			</p>
+			<h2 id="23dc2c64-604d-800d-8f7a-f0b67e6a1d80" class="">7. Áp dụng chính sách nhóm cho nhóm maytinh:</h2>
+			<ul id="23dc2c64-604d-80d4-9dfa-eaaa2c377fd7" class="bulleted-list">
+				<li style="list-style-type:disc">Không cho các thành viên chạy Command Prompt:<ul
+						id="23dc2c64-604d-8004-956e-dbb728e249f1" class="bulleted-list">
+						<li style="list-style-type:circle">kết quả khi chạy cmd trên máy PC2</li>
+					</ul>
+				</li>
+			</ul>
+			<figure id="23dc2c64-604d-80cb-a73c-d935820d9471" class="image"><a
+					href="User-&amp;-Group-Policy/image-19.png"><img
+						style="width:710px"
+						src="User-&amp;-Group-Policy/image-19.png" /></a>
+			</figure>
+			<ul id="23dc2c64-604d-809c-9daf-d2823b36eab2" class="bulleted-list">
+				<li style="list-style-type:disc">Các thành viên chỉ có thể chạy Notepad<ul
+						id="23dc2c64-604d-8010-b691-d01df3cf84fa" class="bulleted-list">
+						<li style="list-style-type:circle">kết quả khi chạy notepad trên máy PC2</li>
+					</ul>
+				</li>
+			</ul>
+			<figure id="23dc2c64-604d-8097-9dd7-eea00122e099" class="image"><a
+					href="User-&amp;-Group-Policy/image-20.png"><img
+						style="width:710px"
+						src="User-&amp;-Group-Policy/image-20.png" /></a>
+			</figure>
+			<ul id="23dc2c64-604d-8065-929e-fde2c1c5389e" class="bulleted-list">
+				<li style="list-style-type:disc">Không cho phép truy cập công cụ Control Panel.<ul
+						id="23dc2c64-604d-8041-97c0-d7923943d215" class="bulleted-list">
+						<li style="list-style-type:circle">kết quả khi chạy control panel trên máy PC2</li>
+					</ul>
+				</li>
+			</ul>
+			<figure id="23dc2c64-604d-80ca-9af8-de6870744a62" class="image"><a
+					href="User-&amp;-Group-Policy/image-21.png"><img
+						style="width:709.953125px"
+						src="User-&amp;-Group-Policy/image-21.png" /></a>
+			</figure>
+			<p id="23dc2c64-604d-80ef-a0cd-c6abf1536ccb" class="">
+			</p>
+			<h2 id="23dc2c64-604d-806c-87ff-eafe68ceba8e" class="">8. Phân phối phần mềm FireFox cho các tài khoản người
+				dùng trong domain</h2>
+			<figure id="23dc2c64-604d-80c8-96c2-c089de9f7f19" class="image"><a
+					href="User-&amp;-Group-Policy/image-22.png"><img
+						style="width:684px"
+						src="User-&amp;-Group-Policy/image-22.png" /></a>
+			</figure>
+			<ul id="23dc2c64-604d-8071-8c0c-d2533cd57932" class="bulleted-list">
+				<li style="list-style-type:disc">PC2 đã có firefox</li>
+			</ul>
+			<figure id="23dc2c64-604d-80c8-ae30-e9e9b21fb703" class="image"><a
+					href="User-&amp;-Group-Policy/image-23.png"><img
+						style="width:436px"
+						src="User-&amp;-Group-Policy/image-23.png" /></a>
+			</figure>
+		</div>
+	</article><span class="sans" style="font-size:14px;padding-top:2em"></span>
+</body>
+
+</html>
