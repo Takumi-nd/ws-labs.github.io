@@ -1,0 +1,683 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Domain Controller</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="236c2c64-604d-807f-90d8-f2c59e6bb632" class="page sans"><header><h1 class="page-title">Domain Controller</h1><p class="page-description"></p></header><div class="page-body"><p id="236c2c64-604d-80de-8615-db4013985bd3" class="">Mục tiêu:</p><ul id="236c2c64-604d-80c8-893c-e894aa462744" class="bulleted-list"><li style="list-style-type:disc">Deploy domain controller.</li></ul><ul id="236c2c64-604d-800f-8122-cf71bed4ba16" class="bulleted-list"><li style="list-style-type:disc">Làm quen với Windows Server, Active Directory, Server Manager.</li></ul><ul id="236c2c64-604d-8081-bc81-edb19cdcb2ae" class="bulleted-list"><li style="list-style-type:disc">Nâng cấp client thành alternative domain controller.</li></ul><ul id="236c2c64-604d-803f-b558-ca5a8a20c3f1" class="bulleted-list"><li style="list-style-type:disc">Giáng cấp primary domain controller thành standalone.</li></ul><p id="236c2c64-604d-806b-92f2-dfe68c6f1a36" class="">Enviroment:</p><ul id="236c2c64-604d-8040-9a37-c0cc86f0e88c" class="bulleted-list"><li style="list-style-type:disc">Virtual machines: Windows Server 2019</li></ul><ul id="236c2c64-604d-80ea-83b3-c49253b2c78b" class="bulleted-list"><li style="list-style-type:disc">VirtualBox</li></ul><p id="236c2c64-604d-80be-8d45-fc45c67c1a06" class="">Mô hình:</p><figure id="236c2c64-604d-8052-b7db-c25b92666ca9" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image.png"><img style="width:559px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image.png"/></a></figure><h2 id="236c2c64-604d-8057-a69c-c97bd8695bea" class="">1. Cấu hình PC1 thành domain controller với tên domain là domain1.local:</h2><ul id="236c2c64-604d-8072-9d75-ef43de75c36f" class="bulleted-list"><li style="list-style-type:disc"> Chỉnh Preferred DNS Server về địa chỉ của máy Server (192.168.1.1)<ul id="236c2c64-604d-800b-8b81-cfe3316ba6fe" class="bulleted-list"><li style="list-style-type:circle">Settings → Network &amp; Internet → Change adapter options </li></ul><ul id="236c2c64-604d-80f5-8b65-f3694015e056" class="bulleted-list"><li style="list-style-type:circle">Chọn NET1 → Properties → Chọn Internet Protocol Version 4 (TCP/IPv4) → Properties</li></ul></li></ul><figure id="236c2c64-604d-80c8-b9fa-da901682b245" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%201.png"><img style="width:594px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%201.png"/></a></figure><ul id="236c2c64-604d-80da-a558-d20ffc6fcf65" class="bulleted-list"><li style="list-style-type:disc">Thực hiện cài đặt Active Directory Domain Services và cấu hình PC1 thành domain controller:<ul id="236c2c64-604d-80b8-944f-e234a202f814" class="bulleted-list"><li style="list-style-type:circle">Mở Server Manager: Start → Server Manager.</li></ul><ul id="236c2c64-604d-8055-b7ae-d6e655e97d3e" class="bulleted-list"><li style="list-style-type:circle">Chọn Manage → Add Roles and Features<ul id="236c2c64-604d-8040-9c79-f7c21cb02ad6" class="bulleted-list"><li style="list-style-type:square">Before You Begin → Next </li></ul><ul id="236c2c64-604d-80b3-b5de-da8e710ab7b0" class="bulleted-list"><li style="list-style-type:square">Installation Type → Role-based or feature-based installation → Next </li></ul><ul id="236c2c64-604d-801a-b2bb-e85582f9ab49" class="bulleted-list"><li style="list-style-type:square">Server Selection → PC1 → Next </li></ul><ul id="236c2c64-604d-804e-a682-e6925064d3ab" class="bulleted-list"><li style="list-style-type:square">Server Roles → Chọn Active Directory Domain Services → Add Features → Next</li></ul><ul id="236c2c64-604d-8056-a4cc-f385378b86ec" class="bulleted-list"><li style="list-style-type:square">Features → Next  </li></ul><ul id="236c2c64-604d-808c-8674-ce8dd6d5eb5a" class="bulleted-list"><li style="list-style-type:square">AD CS → Next</li></ul><ul id="236c2c64-604d-80e2-a662-f9ec1380cdcc" class="bulleted-list"><li style="list-style-type:square">Confirmation → Install → Close</li></ul></li></ul><ul id="236c2c64-604d-8002-a28a-d990dd5c008f" class="bulleted-list"><li style="list-style-type:circle">Chọn hình lá cờ (đang có ghi chú chấm than) → Promote thí server to a domain controller.<ul id="236c2c64-604d-8030-a10a-e0f39f2b94ba" class="bulleted-list"><li style="list-style-type:square">Deployment Configuration → Add a new forest → Root domain name:<br/>“domain1.local” → Next<br/></li></ul><ul id="236c2c64-604d-8040-99c0-c6ab84a9c3e7" class="bulleted-list"><li style="list-style-type:square">Domain Controller Options → Sử dụng mặc định</li></ul><ul id="236c2c64-604d-80c6-95a7-e226a11f7a12" class="bulleted-list"><li style="list-style-type:square">Type the Directory Services Restore Mode (DSRM) password (mật khẩu ở chế độ<br/>khôi phục): tùy ý<br/></li></ul><ul id="236c2c64-604d-80ad-9176-c01116bd3732" class="bulleted-list"><li style="list-style-type:square">DNS Options → Next</li></ul><ul id="236c2c64-604d-8037-b0b9-d9e5c0816724" class="bulleted-list"><li style="list-style-type:square">Additional Option → DOMAIN1 → Next</li></ul><ul id="236c2c64-604d-8076-bafd-e2261ce4e8f7" class="bulleted-list"><li style="list-style-type:square">Paths → Sử dụng mặc định → Next </li></ul><ul id="236c2c64-604d-8025-89cb-ecf414ecac91" class="bulleted-list"><li style="list-style-type:square">Review Options → Next </li></ul><ul id="236c2c64-604d-80b1-bf70-fc177196348d" class="bulleted-list"><li style="list-style-type:square">Prerequisties Check → Install</li></ul><ul id="236c2c64-604d-801b-8d9a-dc72b5a80090" class="bulleted-list"><li style="list-style-type:square">Install → Máy tính sẽ tự khởi động lại.</li></ul></li></ul></li></ul><figure id="236c2c64-604d-8036-9ca2-cfd6aad24f8d" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%202.png"><img style="width:709.953125px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%202.png"/></a></figure><h2 id="236c2c64-604d-8032-a5ad-d9d1edeffa5b" class="">2. Cài đặt cho máy PC2 (Client) gia nhập vào domain1.local:</h2><ul id="236c2c64-604d-80ad-9922-fa8b8adc1a7c" class="bulleted-list"><li style="list-style-type:disc">PC2 gia nhập domain1.local:<ul id="236c2c64-604d-80eb-ab2b-e9a6bf941ffb" class="bulleted-list"><li style="list-style-type:circle"> Chỉnh Preferred DNS Server về địa chỉ của máy Server (192.168.1.1). </li></ul><ul id="236c2c64-604d-80f3-8cd4-d01b24a27afd" class="bulleted-list"><li style="list-style-type:circle"> Chuyển từ thành viên của Workgroup thành thành viên của domain domain1.local<ul id="236c2c64-604d-80ef-951f-eca007c05e25" class="bulleted-list"><li style="list-style-type:square">System Properties (phải chuột My This PC chọn Properties) → Change settings →<br/>Computer Name → Change…<br/><ul id="236c2c64-604d-8040-8c2c-eaa610e9aff5" class="bulleted-list"><li style="list-style-type:disc">More… → Primary DNS suffix of this computer → domain1.local → OK </li></ul><ul id="236c2c64-604d-80eb-bffa-cb5d1272f5ab" class="bulleted-list"><li style="list-style-type:disc">Domain. → domain1.local → OK</li></ul><ul id="236c2c64-604d-8025-a982-f93219a0212b" class="bulleted-list"><li style="list-style-type:disc">Xác nhận bằng tài khoản quản trị (administrator/P@ssw0rd). → Khởi động lại máy<br/>tính.<br/></li></ul></li></ul></li></ul><ul id="236c2c64-604d-8086-92b4-f9cf4ab83e20" class="bulleted-list"><li style="list-style-type:circle"> Đăng nhập bằng tài khoản domain: <ul id="236c2c64-604d-8014-ab69-fa818aecce21" class="bulleted-list"><li style="list-style-type:square">Tại giao diện đăng nhập chọn “Other user”.</li></ul><ul id="236c2c64-604d-80b0-9ef5-f69dee1122a8" class="bulleted-list"><li style="list-style-type:square">Đăng nhập bằng tài khoản quản trị (vì chưa tạo tài khoản người dùng nào khác):  <ul id="236c2c64-604d-80db-86b6-efc147c1b136" class="bulleted-list"><li style="list-style-type:disc">User name: domain1.local\administrator</li></ul><ul id="236c2c64-604d-806e-9873-ff6fbc49d619" class="bulleted-list"><li style="list-style-type:disc">Password: P@ssw0rd</li></ul></li></ul></li></ul></li></ul><figure id="236c2c64-604d-80d3-bd9e-e01cba0b4c00" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%203.png"><img style="width:418px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%203.png"/></a></figure><h2 id="236c2c64-604d-8070-8bc9-eb60fe12cd66" class="">3. Khảo sát chức năng và các thành phần của một số công cụ trong hệ thống Active Directory tại máy Domain Controller:</h2><ul id="236c2c64-604d-804a-8744-d253ac79e960" class="bulleted-list"><li style="list-style-type:disc">Active Directory Users and Computer:</li></ul><figure id="236c2c64-604d-8079-9620-ee135971c3e9" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%204.png"><img style="width:709.984375px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%204.png"/></a></figure><ul id="236c2c64-604d-807a-a77b-fd6b6c2d2254" class="bulleted-list"><li style="list-style-type:disc">Active Directory Domains and Trusts:</li></ul><figure id="236c2c64-604d-808b-9bc7-cfea03cb2ca3" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%205.png"><img style="width:517px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%205.png"/></a></figure><h2 id="236c2c64-604d-80bb-b495-d5e71c9dd787" class="">4. Nâng máy Client thành Additional Domain Controller (ADC) chạy song song với máy DC (Primary DC - PDC) có sẵn trong domain domain1.local:</h2><ul id="236c2c64-604d-806c-992e-f579a244992b" class="bulleted-list"><li style="list-style-type:disc">Các bước nâng PC thành ADC: <ul id="236c2c64-604d-8042-93c9-fd909f994828" class="bulleted-list"><li style="list-style-type:circle">Logon bằng quyền của Domain Admin.</li></ul><ul id="236c2c64-604d-80e7-a6d7-d989818e1493" class="bulleted-list"><li style="list-style-type:circle"> Chỉnh Alternate DNS Server về máy sẽ nâng cấp thành ADC (PC2). <ul id="236c2c64-604d-80c8-bbcc-dca713816dde" class="bulleted-list"><li style="list-style-type:square">Start → Control Panel → Network and Internet → Network and Sharing Center → NET1<figure id="236c2c64-604d-8047-9613-fcb59d39038d" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%206.png"><img style="width:504px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%206.png"/></a></figure></li></ul></li></ul><ul id="236c2c64-604d-804b-b87c-e22b367acbb9" class="bulleted-list"><li style="list-style-type:circle"> Cài đặt Active Directory Domain Services<ul id="236c2c64-604d-80cd-ad58-e92cd97a314b" class="bulleted-list"><li style="list-style-type:square">tương tự phần 1</li></ul></li></ul><ul id="236c2c64-604d-8057-80de-c9b62f91895f" class="bulleted-list"><li style="list-style-type:circle"> Cấu hình máy PC2 thành Additional Domain Controller <ul id="236c2c64-604d-8021-94fc-d22d265b23d3" class="bulleted-list"><li style="list-style-type:square">Thực hiện giống câu 1 tuy nhiên tại bước Deployment Configuration chọn “Add a domain controller to an existing domain”.</li></ul></li></ul></li></ul><ul id="236c2c64-604d-80dc-9e7d-cd9d4cecc5c2" class="bulleted-list"><li style="list-style-type:disc">Kết quả sau khi thực hiện nâng cấp PC2 thành ADC, kiểm tra trong Active Directory Users and<br/>Computers ta thấy lúc này client không còn hiển thị máy tính nào, ở Domain Controller chúng ta có 2 máy DC chạy song song nhau:<br/></li></ul><figure id="236c2c64-604d-80e1-b34b-c7b694842224" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%207.png"><img style="width:709.96875px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%207.png"/></a></figure><ul id="236c2c64-604d-8039-9794-fb8ef4643657" class="bulleted-list"><li style="list-style-type:disc">PC2 lúc này cũng sẽ có đầy đủ các quyền như trên PDC: </li></ul><figure id="236c2c64-604d-806f-8364-c077faf1be7a" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%208.png"><img style="width:709.96875px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%208.png"/></a></figure><ul id="236c2c64-604d-80d1-96e0-e4c9299bb1fe" class="bulleted-list"><li style="list-style-type:disc"> Cấu hình để máy PDC đồng bộ thông tin DNS cho máy ADC<ul id="236c2c64-604d-80f8-871e-df5ff279695e" class="bulleted-list"><li style="list-style-type:circle">Trên máy PDC, Server Manager → Tools → DNS</li></ul><ul id="236c2c64-604d-803a-96be-d06d9d775518" class="bulleted-list"><li style="list-style-type:circle">Chọn Properties của DNS/Forward Lookup Zone/&lt;tên miền&gt;).</li></ul><ul id="236c2c64-604d-800f-8414-d75d1fdc55c3" class="bulleted-list"><li style="list-style-type:circle">Thêm địa chỉ của máy ADC vào Zone Transfer/Only to the following servers.</li></ul><ul id="236c2c64-604d-803a-b293-d7d4f5e038df" class="bulleted-list"><li style="list-style-type:circle">Kiểm tra các thông tin cấu hình DNS (trong Server Manager → Tools → DNS) trên máy<br/>ADC phải giống với máy PDC.<br/></li></ul><ul id="236c2c64-604d-80a4-a0a6-ea03d18e4bfc" class="bulleted-list"><li style="list-style-type:circle">Thêm địa chỉ máy ADC vào Alternate DNS (trong phần cấu hình IP), trên tất cả các<br/>máy trong domain.<br/></li></ul><ul id="236c2c64-604d-800e-8078-d5f81d3e2880" class="bulleted-list"><li style="list-style-type:circle">PC1 (PDC):</li></ul><figure id="236c2c64-604d-80e6-9047-ebd31ed1a8cc" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%209.png"><img style="width:709.984375px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%209.png"/></a></figure><ul id="236c2c64-604d-801d-9664-da6a9d5bcea3" class="bulleted-list"><li style="list-style-type:circle">PC2 (ADC):</li></ul><figure id="236c2c64-604d-80f1-a023-c4742cdb3953" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%2010.png"><img style="width:681.984375px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%2010.png"/></a></figure></li></ul><p id="236c2c64-604d-8042-82f9-ee66ec3140e1" class="">
+</p><ul id="236c2c64-604d-8008-8807-dc2484697305" class="bulleted-list"><li style="list-style-type:disc">Mục Global Catalog trên PC2 lúc này đã được check: </li></ul><figure id="236c2c64-604d-8086-8834-e6cc124819b8" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%2011.png"><img style="width:625px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%2011.png"/></a></figure><p id="236c2c64-604d-801c-9bf4-e4140adbdb27" class="">
+</p><h2 id="236c2c64-604d-80d4-aa8b-de9fd73961ec" class="">5. Giáng cấp (demote) máy sever từ PDC thành Standalone. Sau đó, xem xét sự thay đổi:</h2><ul id="236c2c64-604d-8068-8827-d5651386c452" class="bulleted-list"><li style="list-style-type:disc">Bước làm:<ul id="236c2c64-604d-8042-a51f-fb42ef82771a" class="bulleted-list"><li style="list-style-type:circle">Gỡ cài đặt Active Directory Domain Services <ul id="236c2c64-604d-80e3-b60f-f650ecf74ad0" class="bulleted-list"><li style="list-style-type:square">Mở Server Manager: Start → Server Manager. </li></ul><ul id="236c2c64-604d-8021-88f8-d44f9cf19a24" class="bulleted-list"><li style="list-style-type:square">Chọn Manage → Remove Roles and Features <ul id="236c2c64-604d-8059-8d3e-d271194756da" class="bulleted-list"><li style="list-style-type:disc">Before You Begin → Next</li></ul><ul id="236c2c64-604d-803d-8d2d-ecd757c8d135" class="bulleted-list"><li style="list-style-type:disc">Server Selection → Chọn máy PC1.domain1.local → Next </li></ul><ul id="236c2c64-604d-80a3-8549-f4c02bedb922" class="bulleted-list"><li style="list-style-type:disc">Server Roles → Bỏ chọn Active Directory Domain Services → Remove Features → Next → Demote this domain controller </li></ul><ul id="236c2c64-604d-80fa-9d15-fed87a9d09b8" class="bulleted-list"><li style="list-style-type:disc">Credentials → Force the remove of this domain controller → Next.</li></ul><ul id="236c2c64-604d-80ff-9080-ee5133b3ed32" class="bulleted-list"><li style="list-style-type:disc">Warnings → Proceed with removal → Next</li></ul><ul id="236c2c64-604d-8033-b502-e51050517b1a" class="bulleted-list"><li style="list-style-type:disc">New Administrator Password → Tùy ý</li></ul><ul id="236c2c64-604d-807a-824d-c3806e17b002" class="bulleted-list"><li style="list-style-type:disc">Review Options → Demote</li></ul><ul id="236c2c64-604d-809c-9b9b-e4002e345351" class="bulleted-list"><li style="list-style-type:disc">Results → Close. </li></ul></li></ul></li></ul></li></ul><ul id="236c2c64-604d-8023-aa53-ce31e89e5dd0" class="bulleted-list"><li style="list-style-type:disc">Sau khi giáng cấp PC1 (PDC) lúc này không còn tài khoản domain, mà chỉ còn lại một local account:</li></ul><figure id="236c2c64-604d-8088-b234-de2ae44b4f7a" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%2012.png"><img style="width:513px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%2012.png"/></a></figure><ul id="236c2c64-604d-8083-8e7b-fff2bc6ae923" class="bulleted-list"><li style="list-style-type:disc">Chúng ta không thể truy cập cũng như chỉnh sửa các thành phần Active Directory Users and Computers, Active Directory Domains and Trusts, Active Directory Sites and Service được nữa:</li></ul><figure id="236c2c64-604d-802c-8d76-fbd392d83a8c" class="image"><a href="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%2013.png"><img style="width:368px" src="Domain%20Controller%20236c2c64604d807f90d8f2c59e6bb632/image%2013.png"/></a></figure><p id="236c2c64-604d-80b5-9ec6-d4d3e4679763" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
